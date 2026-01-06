@@ -8,7 +8,6 @@ networks:
 
   dmz:
     driver: bridge
-    internal: false
     ipam:
       config:
         - subnet: 10.10.1.0/24
@@ -37,19 +36,15 @@ services:
     container_name: constellation_router
     #hostname: fw-northshield
     networks:
+      internet:
+        ipv4_address: 172.20.0.254
       dmz:
         ipv4_address: 10.10.1.254
-      internal:
-        ipv4_address: 10.10.2.254
-      control:
-        ipv4_address: 10.10.3.254
     cap_add:
       - NET_ADMIN
     privileged: true
     sysctls:
       net.ipv4.ip_forward: "1"
-#    volumes:
-#      - ./containers/router/iptables:/etc/iptables
 
   # ============== INTERNET ==============
   kali:
@@ -60,10 +55,8 @@ services:
       internet:
         ipv4_address: 172.20.0.100
     ports:
-      #- "2222:22"
+      - "2222:22"
       - "3389:3389"
-#    volumes:
-#      - ./attacker-home:/root/ctf
     cap_add:
       - NET_ADMIN
       - NET_RAW
@@ -71,134 +64,48 @@ services:
     stdin_open: true
     tty: true
     restart: unless-stopped
+#    command: sh -c "
+#      ip route add 10.10.1.0/24 via 172.20.0.254 &&
+#      echo 'Route vers DMZ ajoutée' &&
+#      tail -f /dev/null"
 
   # ============== DMZ ZONE ==============
-#  web-portal:
-#    build: ./containers/web-portal
-#    container_name: constellation_web_portal
-#    hostname: portal.northshield.space
-#    networks:
-#      dmz:
-#        ipv4_address: 10.10.1.10
-#    ports:
-#      - "80:80"
-#      - "443:443"
-#    environment:
-#      - MYSQL_HOST=10.10.1.10
-#      - MYSQL_DATABASE=portal_db
-#      - MYSQL_USER=web_user
-#      - MYSQL_PASSWORD=W3b_P0rt@l_2024
-#    volumes:
-#      - ./containers/web-portal/www:/var/www/html
-#      - ./flags/flag1.txt:/var/www/html/.flag1.txt
+  web-client:
+    build: ./containers/dmz/web-client
+    container_name: constellation-web-client
+    #hostname: web-client
+    networks:
+      dmz:
+        ipv4_address: 10.10.1.10
+    ports:
+      - "8080:80"
+    depends_on:
+      - db-server
+    environment:
+      - DB_HOST=db-server
+      - DB_USER=webuser
+      - DB_PASS=WebP@ss2024!
+      - DB_NAME=northshield_clients
+    cap_add:
+      - NET_ADMIN
+    command: sh -c "
+      ip route add 172.20.0.0/24 via 10.10.1.254 &&
+      echo 'Route vers INTERNET ajoutée' &&
+      apachectl -D FOREGROUND"
 
-#  partner-api:
-#    build: ./containers/partner-api
-#    container_name: constellation_partner_api
-#    hostname: api-partner.northshield.space
-#    networks:
-#      dmz:
-#        ipv4_address: 10.10.1.20
-#    environment:
-#      - NODE_ENV=production
-#      - API_KEY=NSDefense_Partner_Key_8472
-#    volumes:
-#      - ./containers/partner-api/app:/app
-#      - ./flags/flag2.txt:/app/docs/flag2.txt
+  db-server:
+    build: ./containers/dmz/db-server
+    container_name: constellation-db
+    #hostname: db-server
+    networks:
+      dmz:
+        ipv4_address: 10.10.1.15
+    environment:
+      - MYSQL_ROOT_PASSWORD=R00tP@ssDB2024!
+      - MYSQL_DATABASE=northshield_clients
+      - MYSQL_USER=webuser
+      - MYSQL_PASSWORD=WebP@ss2024!
+    cap_add:
+      - NET_ADMIN
 
-  # ============== INTERNAL NETWORK ==============
-#  intranet-srv:
-#    build: ./containers/intranet
-#    container_name: constellation_intranet
-#    hostname: intranet.northshield.internal
-#    networks:
-#      dmz:
-#        ipv4_address: 10.10.1.15
-#      internal:
-#        ipv4_address: 10.10.2.10
-#    volumes:
-#      - ./containers/intranet/www:/var/www/html
-#      - ./flags/flag3.txt:/var/www/uploads/.flag3.txt
-
-#  file-server:
-#    build: ./containers/file-server
-#    container_name: constellation_fileserver
-#    hostname: files.northshield.internal
-#    networks:
-#      internal:
-#        ipv4_address: 10.10.2.20
-#    volumes:
-#      - ./containers/file-server/shares:/shares
-#      - ./flags/flag4.txt:/shares/engineering/docs/.flag4.txt
-
-#  workstation-01:
-#    build: ./containers/workstation
-#    container_name: constellation_workstation
-#    hostname: ws-evolkov
-#    networks:
-#      internal:
-#        ipv4_address: 10.10.2.30
-#      control:
-#        ipv4_address: 10.10.3.5
-#    volumes:
-#      - ./containers/workstation/home:/home/evolkov
-#      - ./flags/flag5.txt:/home/evolkov/.ssh/flag5.txt
-
-#  mail-server:
-#    build: ./containers/mail
-#    container_name: constellation_mail
-#    hostname: mail.northshield.internal
-#    networks:
-#      internal:
-#        ipv4_address: 10.10.2.40
-#    volumes:
-#      - ./containers/mail/mailboxes:/var/mail
-#      - ./flags/flag6.txt:/var/mail/evolkov/.flag6.txt
-
-  # ============== CONTROL NETWORK ==============
-#  ground-station:
-#    build: ./containers/ground-station
-#    container_name: constellation_ground_station
-#    hostname: gs-alpha
-#    networks:
-#      control:
-#        ipv4_address: 10.10.3.10
-#    cap_add:
-#      - SYS_ADMIN
-#    volumes:
-#      - ./containers/ground-station/opt:/opt/ground-control
-#      - ./flags/flag7.txt:/opt/ground-control/.flag7.txt
-
-#  telemetry-db:
-#    image: postgres:15-alpine
-#    container_name: constellation_telemetry_db
-#    hostname: telemetry-database
-#    networks:
-#      control:
-#        ipv4_address: 10.10.3.20
-#    environment:
-#      - POSTGRES_DB=argos_telemetry
-#      - POSTGRES_USER=argos_admin
-#      - POSTGRES_PASSWORD=Arg0s_T3l3m3try_S3cur3!
-#    volumes:
-#      - ./containers/database/init:/docker-entrypoint-initdb.d
-#      - ./flags/flag8.txt:/var/lib/postgresql/data/.flag8.txt
-
-#  argos-controller:
-#    build: ./containers/argos-controller
-#    container_name: constellation_argos_controller
-#    hostname: argos-7b-ctrl
-#    networks:
-#      control:
-#        ipv4_address: 10.10.3.30
-#    environment:
-#      - DB_HOST=10.10.3.20
-#      - DB_NAME=argos_telemetry
-#      - DB_USER=argos_admin
-#      - DB_PASSWORD=Arg0s_T3l3m3try_S3cur3!
-#    volumes:
-#      - ./containers/argos-controller/ada-app:/opt/argos
-#      - ./flags/flag_final.txt:/opt/argos/.flag_final.txt
-#    depends_on:
-#      - telemetry-db
 
