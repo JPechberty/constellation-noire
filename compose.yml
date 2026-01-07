@@ -15,7 +15,6 @@ networks:
 
   internal:
     driver: bridge
-    internal: true
     ipam:
       config:
         - subnet: 10.10.2.0/24
@@ -23,7 +22,6 @@ networks:
 
   control:
     driver: bridge
-    internal: true
     ipam:
       config:
         - subnet: 10.10.3.0/24
@@ -40,6 +38,8 @@ services:
         ipv4_address: 172.20.0.254
       dmz:
         ipv4_address: 10.10.1.254
+      internal:
+        ipv4_address: 10.10.2.254
     cap_add:
       - NET_ADMIN
     privileged: true
@@ -100,6 +100,9 @@ services:
     networks:
       dmz:
         ipv4_address: 10.10.1.15
+    # DEV MODE
+    ports:
+      - "2223:22"
     environment:
       - MYSQL_ROOT_PASSWORD=R00tP@ssDB2024!
       - MYSQL_DATABASE=northshield_clients
@@ -107,5 +110,25 @@ services:
       - MYSQL_PASSWORD=WebP@ss2024!
     cap_add:
       - NET_ADMIN
+    command: sh -c "
+      ip route add 10.10.2.0/24 via 10.10.1.254 &&
+      echo 'Route vers INTERNAL ajoutée' &&
+      /usr/sbin/sshd &&
+      tail -f /dev/null"
 
+  # ============== INTERNAL ZONE ==============
 
+  file-server:
+    build: ./containers/internal/file-server
+    container_name: nightfire-fileserver
+    hostname: file-server
+    networks:
+      internal:
+        ipv4_address: 10.10.2.10
+    cap_add:
+      - NET_ADMIN
+    command: sh -c "
+      ip route add 10.10.1.0/24 via 10.10.2.254 &&
+      echo 'Route vers DMZ ajoutée' &&
+      ./start.sh &&
+      tail -f /dev/null"
