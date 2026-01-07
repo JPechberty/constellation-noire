@@ -88,7 +88,7 @@ EXPOSE 22 3389
 # Script de démarrage
 RUN echo '#!/bin/bash' > /start.sh && \
     echo 'service ssh start' >> /start.sh && \
-    echo 'service xrdp start' >> /start.sh && \
+    echo 'service xrdp start' >>   /start.sh && \
     echo 'ip route add 10.10.1.0/24 via 172.20.0.254 dev eth0' >> /start.sh && \
     echo 'echo "Route Internet vers DMZ Ajouté"' >> /start.sh && \
     echo 'setxbkmap fr' >> /start.sh && \

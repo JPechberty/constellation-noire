@@ -1,0 +1,17 @@
+╔══════════════════════════════════════════════════════════════╗
+║                    🎯 FLAG CAPTURED 🎯                       ║
+╚══════════════════════════════════════════════════════════════╝
+
+Félicitations! Vous avez réussi à accéder au DB-Server.
+
+Cette machine est votre point de pivot vers le réseau INTERNAL.
+
+FLAG: NIGHTFIRE{pivot_point_established}
+
+Points: 15
+
+Prochaine étape:
+- Utilisez la clé SSH dans /home/dbadmin/.ssh/id_rsa
+- Pivotez vers le file-server (172.22.0.10)
+
+Bon courage pour la suite!
