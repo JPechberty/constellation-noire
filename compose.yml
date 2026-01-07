@@ -132,3 +132,19 @@ services:
       echo 'Route vers DMZ ajoutée' &&
       ./start.sh &&
       tail -f /dev/null"
+
+  workstation1:
+    build: ./containers/internal/workstation1
+    container_name: nightfire-ws1
+    hostname: dev-workstation
+    networks:
+      internal:
+        ipv4_address: 10.10.2.20
+
+  workstation2:
+    build: ./containers/internal/workstation2
+    container_name: nightfire-ws2
+    hostname: po-workstation
+    networks:
+      internal:
+        ipv4_address: 10.10.2.21

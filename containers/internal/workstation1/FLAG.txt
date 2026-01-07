@@ -1,0 +1,17 @@
+╔══════════════════════════════════════════════════════════════╗
+║                    🎯 FLAG CAPTURED 🎯                       ║
+╚══════════════════════════════════════════════════════════════╝
+
+Félicitations! Vous avez réussi à accéder à la workstation 1.
+
+Cette machine est votre point de pivot vers le réseau CONTROL.
+
+NIGHTFIRE{developer_workspace_breached}
+
+Points: 10
+
+Prochaine étape: ( A MODIFIER )
+- Utilisez la clé SSH dans /home/dbadmin/.ssh/id_rsa
+- Pivotez vers le file-server (172.22.0.10)
+
+Bon courage pour la suite!
