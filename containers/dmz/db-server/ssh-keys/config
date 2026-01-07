@@ -1,0 +1,7 @@
+Host fileserver
+    HostName 10.10.2.10
+    User fileadmin
+    IdentityFile ~/.ssh/id_rsa
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+
