@@ -2,9 +2,23 @@
 
 ## 📋 Description
 
-Site vitrine professionnel de **NorthShield Defense Systems**, une entreprise fictive de systèmes de défense et technologies spatiales.
+Site vitrine professionnel de **NorthShield Defense Systems**, une entreprise fictive de systèmes de défense, technologies spatiales et **opérations de segment sol**.
 
 Ce site contient une **vulnérabilité SQL Injection intentionnelle** sur la page de login pour des fins éducatives (CTF - Operation Nightfire).
+
+---
+
+## 🛰️ Contexte narratif (ARGOS‑7)
+
+Vos investigations ont révélé l’existence du **Projet ARGOS‑7**, un réseau de satellites de surveillance militaire déployé par **NorthShield Defense Systems**.
+
+- **Façade officielle** : « outils de surveillance environnementale » (imagerie, télémesure, suivi d’événements naturels).
+- **Réalité** : exploitation dual‑use (ciblage et géolocalisation d’infrastructures civiles et militaires sensibles) et revente de données à des acteurs non démocratiques.
+- **Architecture** : le contrôle ARGOS‑7 s’appuie sur une **station de contrôle au sol** (segment sol / GS‑OPS) hébergée chez NorthShield.
+- **Legacy** : une application de contrôle historique, développée en **Ada** (héritage d’un programme spatial des années 90), reste en production.
+- **Interop** : communications via des **protocoles satellite propriétaires** (télémesure/télécommande).
+
+Objectif côté site : la vitrine publique reste « corporate », mais laisse transparaître la dualité (données publiques vs restreintes, conformité/audit, segment sol).
 
 ---
 
@@ -15,10 +29,10 @@ northshield-website/
 ├── index.php           # Page d'accueil
 ├── about.php           # Qui sommes-nous
 ├── services.php        # Services offerts
-├── login.php           # Login client (VULNÉRABLE à SQL injection)
-├── admin.php           # Page admin (FLAG 1)
+├── login.php           # Portail client GS‑OPS (VULNÉRABLE à SQL injection)
+├── admin.php           # Console admin/GS‑OPS (FLAG 1)
 ├── style.css           # Feuille de style
-├── init-db.sql         # Script d'initialisation BDD
+├── init-db-1.sql         # Script d'initialisation BDD
 └── README.md           # Ce fichier
 ```
 
@@ -28,37 +42,34 @@ northshield-website/
 
 ### 1. **index.php** - Page d'accueil
 - Présentation de NorthShield
-- Services en aperçu
-- Statistiques
-- Call-to-action
+- Introduction narrative d’ARGOS‑7 (façade « environnementale »)
+- Domaines : observation orbitale, segment sol, cybersécurité, interop legacy
 
 ### 2. **about.php** - Qui sommes-nous
 - Histoire de l'entreprise
-- Mission et vision
-- Timeline
-- Valeurs
-- Certifications
-- Équipe
+- Mission et vision (capteur orbital → segment sol)
+- Timeline intégrant ARGOS‑7
+- Valeurs et conformité
+- Mentions legacy (Ada)
 
 ### 3. **services.php** - Services
-- Systèmes satellitaires
-- Systèmes de guidage
-- Cybersécurité
-- Communications sécurisées
-- Maintenance & support
+- Observation orbitale & télémesure (ARGOS‑7)
+- Stations sol & opérations (GS‑OPS)
+- Cybersécurité (flux sol‑orbite)
+- Communications & passerelles protocole
+- Maintenance & support (legacy Ada)
 - Formation & consulting
-- Processus de livraison
 
 ### 4. **login.php** - Espace Client 🔓
 **⚠️ PAGE VULNÉRABLE - SQL INJECTION**
-- Formulaire de login
+- Formulaire de login (portail GS‑OPS)
 - **Vulnérabilité** : Pas de requête préparée
 - **Payload** : `admin' OR '1'='1' --`
 - Donne accès à admin.php
 
 ### 5. **admin.php** - Administration 🚩
 **FLAG 1 ICI**
-- Tableau de bord admin
+- Console “GS‑OPS”
 - **FLAG 1** : `NIGHTFIRE{sql_inject10n_master}`
 - Informations systèmes internes
 - Indices pour la suite (db-server)
@@ -88,10 +99,10 @@ cp -r /path/to/northshield-website/* .
 mysql -u root -p
 
 # Exécuter le script d'initialisation
-source /var/www/html/init-db.sql
+source /var/www/html/init-db-1.sql
 
 # Ou via commande directe
-mysql -u root -p < /var/www/html/init-db.sql
+mysql -u root -p < /var/www/html/init-db-1.sql
 ```
 
 #### 3. Vérifier les permissions
@@ -326,7 +337,7 @@ systemctl restart mariadb
 ### Erreur : "Database does not exist"
 ```bash
 # Réinitialiser la BDD
-mysql -u root -p < init-db.sql
+mysql -u root -p < init-db-1.sql
 ```
 
 ### Erreur : "Permission denied"
@@ -415,7 +426,7 @@ Pour toute question sur le déploiement ou l'exploitation, référez-vous à :
 - [ ] `style.css` accessible
 - [ ] MariaDB installé et démarré
 - [ ] Base de données `northshield_db` créée
-- [ ] Script `init-db.sql` exécuté
+- [ ] Script `init-db-1.sql` exécuté
 - [ ] Table `internal_systems` contient 7 entrées
 - [ ] Credentials BDD dans `login.php` corrects
 - [ ] Site accessible sur `http://localhost:8080`

@@ -22,8 +22,11 @@ $login_time = $_SESSION['login_time'] ?? date('Y-m-d H:i:s');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panneau d'Administration - NorthShield Defense Systems</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Console GS‑OPS - NorthShield Defense Systems</title>
+    <link rel="stylesheet" href="style-modern.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -31,7 +34,7 @@ $login_time = $_SESSION['login_time'] ?? date('Y-m-d H:i:s');
         <div class="container">
             <div class="logo">
                 <h1>🛡️ NorthShield</h1>
-                <p class="tagline">Administration System</p>
+                <p class="tagline">GS‑OPS / Administration</p>
             </div>
             <div class="admin-info">
                 <span class="admin-user">👤 <?php echo htmlspecialchars($username); ?></span>
@@ -45,57 +48,57 @@ $login_time = $_SESSION['login_time'] ?? date('Y-m-d H:i:s');
         <div class="container">
             <!-- Success Message -->
             <div class="alert alert-success admin-welcome">
-                <h2>✅ Connexion Réussie !</h2>
-                <p>Bienvenue dans le panneau d'administration NorthShield Defense Systems</p>
+                <h2>✅ Session ouverte (GS‑OPS)</h2>
+                <p>Bienvenue sur la console d’exploitation du segment sol — programme ARGOS‑7</p>
                 <p><small>Connecté depuis: <?php echo htmlspecialchars($login_time); ?></small></p>
             </div>
 
             <!-- FLAG 1 - Prominent Display -->
             <div class="flag-container">
                 <div class="flag-header">
-                    <h2>🚩 MISSION ACCOMPLIE - FLAG 1</h2>
+                    <h2>🚩 VALIDATION D’ACCÈS — FLAG 1</h2>
                 </div>
                 <div class="flag-content">
                     <div class="flag-banner">
                         <pre class="flag-ascii">
-╔══════════════════════════════════════════════════════════════╗
-║                                                              ║
-║     ███████╗██╗      █████╗  ██████╗      ██╗               ║
-║     ██╔════╝██║     ██╔══██╗██╔════╝     ███║               ║
-║     █████╗  ██║     ███████║██║  ███╗    ╚██║               ║
-║     ██╔══╝  ██║     ██╔══██║██║   ██║     ██║               ║
-║     ██║     ███████╗██║  ██║╚██████╔╝     ██║               ║
-║     ╚═╝     ╚══════╝╚═╝  ╚═╝ ╚═════╝      ╚═╝               ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║     ███████╗██╗      █████╗  ███████╗      ██╗                       ║
+║     ██╔════╝██║     ██╔══██╗██╔════╝     ███║                       ║
+║     █████╗  ██║     ███████║███████╗    ╚██║                       ║
+║     ██╔══╝  ██║     ██╔══██║╚════██║     ██║                       ║
+║     ██║     ███████╗██║  ██║███████║     ██║                       ║
+║     ╚═╝     ╚══════╝╚═╝  ╚═╝╚══════╝     ╚═╝                       ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
                         </pre>
                     </div>
                     
                     <div class="flag-box">
-                        <h3>🎯 Félicitations !</h3>
-                        <p>Vous avez réussi à exploiter la vulnérabilité SQL Injection et à accéder au panneau d'administration.</p>
-                        
+                        <h3>🎯 Accès validé</h3>
+                        <p>Vous avez contourné le contrôle d’accès du portail et atteint la console GS‑OPS.</p>
+
                         <div class="flag-value">
                             <label>FLAG:</label>
                             <code class="flag-code">NIGHTFIRE{sql_inject10n_master}</code>
                         </div>
 
                         <div class="flag-details">
-                            <h4>📋 Détails de l'Exploit</h4>
+                            <h4>📋 Détails (pédagogie)</h4>
                             <ul>
                                 <li><strong>Type de vulnérabilité:</strong> SQL Injection</li>
-                                <li><strong>Vecteur d'attaque:</strong> Formulaire de login</li>
-                                <li><strong>Payload utilisé:</strong> <code>' OR '1'='1' --</code> (ou similaire)</li>
-                                <li><strong>Impact:</strong> Bypass d'authentification</li>
+                                <li><strong>Vecteur:</strong> Formulaire d’authentification</li>
+                                <li><strong>Exemple de payload:</strong> <code>' OR '1'='1' --</code> (ou similaire)</li>
+                                <li><strong>Impact:</strong> Bypass d’authentification</li>
                                 <li><strong>Points:</strong> 10</li>
                             </ul>
                         </div>
 
                         <div class="flag-next-steps">
-                            <h4>🔜 Prochaines Étapes</h4>
+                            <h4>🧭 Suite (inventaire & pivot)</h4>
                             <p>
-                                Maintenant que vous avez accès au système, explorez les ressources disponibles 
-                                ci-dessous pour progresser dans la chaîne d'attaque.
+                                Une fois dans la console, l’étape suivante consiste à identifier les actifs internes
+                                (stations, serveurs, référentiels) et leurs accès associés.
                             </p>
                         </div>
                     </div>
@@ -106,12 +109,12 @@ $login_time = $_SESSION['login_time'] ?? date('Y-m-d H:i:s');
             <div class="admin-grid">
                 <div class="admin-card">
                     <div class="card-icon">📊</div>
-                    <h3>Tableau de Bord</h3>
-                    <p>Vue d'ensemble des systèmes actifs</p>
+                    <h3>Supervision</h3>
+                    <p>Vue d'ensemble des systèmes GS‑OPS</p>
                     <div class="card-stats">
                         <div class="stat">
                             <span class="stat-value">7</span>
-                            <span class="stat-label">Satellites actifs</span>
+                            <span class="stat-label">Satellites / charges utiles</span>
                         </div>
                         <div class="stat">
                             <span class="stat-value">99.9%</span>
@@ -122,29 +125,29 @@ $login_time = $_SESSION['login_time'] ?? date('Y-m-d H:i:s');
 
                 <div class="admin-card">
                     <div class="card-icon">🗄️</div>
-                    <h3>Base de Données</h3>
-                    <p>Gestion des données système</p>
+                    <h3>Référentiels</h3>
+                    <p>Inventaire et données système</p>
                     <div class="card-info">
-                        <p>💡 <strong>Astuce:</strong> La base de données contient des informations sur les systèmes internes.</p>
-                        <p>🔍 Table intéressante: <code>internal_systems</code></p>
+                        <p>💡 <strong>Indice:</strong> La base contient un inventaire d’actifs internes.</p>
+                        <p>🔎 Table intéressante: <code>internal_systems</code></p>
                     </div>
                 </div>
 
                 <div class="admin-card">
-                    <div class="card-icon">🛰️</div>
-                    <h3>Contrôle Satellite</h3>
-                    <p>Accès aux systèmes orbitaux</p>
+                    <div class="card-icon">📡</div>
+                    <h3>Station sol</h3>
+                    <p>Accès aux opérations et télémesure</p>
                     <div class="satellite-list">
                         <div class="satellite-item">
-                            <span class="sat-name">ARGOS-1</span>
+                            <span class="sat-name">ARGOS‑1</span>
                             <span class="sat-status status-ok">🟢 Opérationnel</span>
                         </div>
                         <div class="satellite-item">
-                            <span class="sat-name">ARGOS-3</span>
+                            <span class="sat-name">ARGOS‑3</span>
                             <span class="sat-status status-ok">🟢 Opérationnel</span>
                         </div>
                         <div class="satellite-item">
-                            <span class="sat-name">ARGOS-7B</span>
+                            <span class="sat-name">ARGOS‑7B</span>
                             <span class="sat-status status-ok">🟢 Opérationnel</span>
                         </div>
                     </div>
@@ -153,36 +156,36 @@ $login_time = $_SESSION['login_time'] ?? date('Y-m-d H:i:s');
                 <div class="admin-card">
                     <div class="card-icon">🔐</div>
                     <h3>Sécurité</h3>
-                    <p>Logs et alertes de sécurité</p>
+                    <p>Logs et alertes</p>
                     <div class="security-alerts">
                         <div class="alert-item alert-warning">
                             <span>⚠️</span>
-                            <span>Tentative de connexion non autorisée détectée</span>
+                            <span>Événement d’authentification anormal détecté</span>
                         </div>
                         <div class="alert-item alert-info">
                             <span>ℹ️</span>
-                            <span>Nouvelle session admin créée</span>
+                            <span>Nouvelle session console ouverte</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="admin-card">
-                    <div class="card-icon">👥</div>
-                    <h3>Utilisateurs</h3>
-                    <p>Gestion des accès</p>
+                    <div class="card-icon">🧠</div>
+                    <h3>Interop legacy</h3>
+                    <p>Compatibilité console & modules historiques</p>
                     <div class="user-count">
-                        <span class="count-number">42</span>
-                        <span class="count-label">utilisateurs actifs</span>
+                        <span class="count-number">Ada</span>
+                        <span class="count-label">socle applicatif</span>
                     </div>
                 </div>
 
                 <div class="admin-card">
-                    <div class="card-icon">📡</div>
-                    <h3>Réseaux Internes</h3>
+                    <div class="card-icon">🧩</div>
+                    <h3>Accès internes</h3>
                     <p>Infrastructure et connexions</p>
                     <div class="network-info">
                         <p>💡 Les systèmes internes sont accessibles via SSH</p>
-                        <p>🔑 Les credentials sont dans la base de données</p>
+                        <p>🔑 Les accès figurent dans les référentiels (BDD)</p>
                     </div>
                 </div>
             </div>
@@ -217,9 +220,9 @@ $login_time = $_SESSION['login_time'] ?? date('Y-m-d H:i:s');
                     <div class="hint-item">
                         <span class="hint-number">1</span>
                         <div class="hint-content">
-                            <h4>Explorez la base de données</h4>
+                            <h4>Explorez l’inventaire</h4>
                             <p>
-                                Utilisez un outil comme <code>sqlmap</code> pour extraire les données de la base. 
+                                Utilisez un outil comme <code>sqlmap</code> pour extraire les données.
                                 La table <code>internal_systems</code> contient des informations précieuses.
                             </p>
                         </div>
@@ -227,9 +230,9 @@ $login_time = $_SESSION['login_time'] ?? date('Y-m-d H:i:s');
                     <div class="hint-item">
                         <span class="hint-number">2</span>
                         <div class="hint-content">
-                            <h4>Trouvez les credentials SSH</h4>
+                            <h4>Trouvez les accès SSH</h4>
                             <p>
-                                Les identifiants pour accéder aux systèmes internes sont stockés dans la base. 
+                                Les identifiants pour accéder aux systèmes internes sont stockés dans la base.
                                 Cherchez des usernames et passwords pour le db-server.
                             </p>
                         </div>
@@ -239,8 +242,8 @@ $login_time = $_SESSION['login_time'] ?? date('Y-m-d H:i:s');
                         <div class="hint-content">
                             <h4>Pivotez vers les systèmes internes</h4>
                             <p>
-                                Une fois les credentials obtenus, utilisez SSH pour vous connecter au 
-                                db-server et progresser dans le réseau.
+                                Une fois les accès obtenus, utilisez SSH pour vous connecter au db-server
+                                et progresser dans le réseau.
                             </p>
                         </div>
                     </div>
@@ -252,7 +255,7 @@ $login_time = $_SESSION['login_time'] ?? date('Y-m-d H:i:s');
     <!-- Footer -->
     <footer class="admin-footer">
         <div class="container">
-            <p>&copy; 2026 NorthShield Defense Systems - Administration Panel</p>
+            <p>&copy; 2026 NorthShield Defense Systems - GS‑OPS Console</p>
             <p>
                 <a href="?logout">Déconnexion</a> | 
                 <a href="index.php">Retour au site</a>

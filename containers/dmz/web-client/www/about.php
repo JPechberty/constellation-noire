@@ -7,7 +7,10 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qui sommes-nous - NorthShield Defense Systems</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-modern.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -32,7 +35,7 @@ session_start();
     <section class="page-header">
         <div class="container">
             <h1>Qui sommes-nous</h1>
-            <p>Excellence en défense depuis 1999</p>
+            <p>Excellence technologique et segment sol critique depuis 1999</p>
         </div>
     </section>
 
@@ -42,9 +45,10 @@ session_start();
             <div class="about-intro">
                 <h2>NorthShield Defense Systems</h2>
                 <p class="lead">
-                    Fondée en 1999, NorthShield Defense Systems est un leader mondial dans le développement 
-                    de systèmes de défense avancés, avec une spécialisation particulière dans les technologies 
-                    spatiales et les systèmes de surveillance par satellite.
+                    Fondée en 1999, NorthShield Defense Systems conçoit des systèmes à forte criticité
+                    — de l’observation orbitale jusqu’aux consoles de station de contrôle au sol.
+                    Notre expertise couvre les charges utiles, les chaînes de télémesure, et l’intégration
+                    de systèmes évolutifs avec des composants legacy.
                 </p>
             </div>
 
@@ -52,17 +56,17 @@ session_start();
                 <div class="mission-box">
                     <h3>🎯 Notre Mission</h3>
                     <p>
-                        Fournir des solutions de défense innovantes et fiables qui protègent les intérêts 
-                        stratégiques de nos clients tout en maintenant les plus hauts standards de sécurité 
-                        et de performance opérationnelle.
+                        Fournir des chaînes d’observation et de communications robustes, du capteur orbital
+                        jusqu’aux réseaux et applications du segment sol (GS‑OPS), avec un niveau de fiabilité
+                        compatible avec les environnements institutionnels.
                     </p>
                 </div>
                 <div class="vision-box">
                     <h3>🔭 Notre Vision</h3>
                     <p>
-                        Être le partenaire de référence en matière de systèmes de défense spatiaux, en 
-                        repoussant continuellement les limites de la technologie pour assurer la sécurité 
-                        de demain.
+                        Être le partenaire de référence pour des systèmes dual‑use à haute disponibilité,
+                        en combinant innovation, interopérabilité et maintien en conditions opérationnelles
+                        sur le long terme.
                     </p>
                 </div>
             </div>
@@ -80,22 +84,25 @@ session_start();
                     <div class="timeline-item">
                         <div class="timeline-year">2004</div>
                         <div class="timeline-content">
-                            <h4>Premier Satellite</h4>
-                            <p>Lancement réussi de notre premier satellite de surveillance, ARGOS-1.</p>
+                            <h4>Premiers capteurs d’observation</h4>
+                            <p>Mise en service d’une première plateforme d’imagerie et de télémesure (ARGOS‑1).</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-year">2012</div>
                         <div class="timeline-content">
-                            <h4>Expansion Internationale</h4>
-                            <p>Ouverture de bureaux en Europe et en Asie-Pacifique.</p>
+                            <h4>Expansion internationale</h4>
+                            <p>Déploiement d’équipes d’intégration segment sol et support opérations (24/7).</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-year">2024</div>
                         <div class="timeline-content">
-                            <h4>ARGOS-7B</h4>
-                            <p>Mise en orbite du satellite ARGOS-7B, notre système le plus avancé à ce jour.</p>
+                            <h4>ARGOS‑7 (programme)</h4>
+                            <p>
+                                Extension du programme d’observation « environnementale » avec un segment sol modernisé,
+                                des protocoles de télémesure propriétaires et l’intégration d’applications legacy.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -105,24 +112,24 @@ session_start();
                 <h2>Nos Valeurs</h2>
                 <div class="values-grid">
                     <div class="value-card">
-                        <div class="value-icon">🔒</div>
+                        <div class="value-icon">🔐</div>
                         <h3>Sécurité</h3>
-                        <p>La sécurité de nos systèmes et de nos clients est notre priorité absolue.</p>
+                        <p>Contrôle d’accès, traçabilité et durcissement au cœur de nos systèmes.</p>
                     </div>
                     <div class="value-card">
                         <div class="value-icon">⚡</div>
                         <h3>Innovation</h3>
-                        <p>Nous investissons massivement en R&D pour rester à la pointe de la technologie.</p>
+                        <p>Chaînes de traitement et exploitation de données à l’état de l’art.</p>
                     </div>
                     <div class="value-card">
-                        <div class="value-icon">🤝</div>
-                        <h3>Fiabilité</h3>
-                        <p>Nos clients comptent sur nous pour des missions critiques, 24/7/365.</p>
+                        <div class="value-icon">🧰</div>
+                        <h3>Pérennité</h3>
+                        <p>Support long terme et interopérabilité — y compris sur des briques legacy.</p>
                     </div>
                     <div class="value-card">
                         <div class="value-icon">🌍</div>
-                        <h3>Excellence</h3>
-                        <p>Nous visons l'excellence dans chaque aspect de nos opérations.</p>
+                        <h3>Responsabilité</h3>
+                        <p>Conformité, auditabilité et séparation des jeux de données selon les habilitations.</p>
                     </div>
                 </div>
             </div>
@@ -154,9 +161,10 @@ session_start();
             <div class="team">
                 <h2>Notre Équipe</h2>
                 <p class="team-intro">
-                    NorthShield emploie plus de 2,500 professionnels hautement qualifiés, incluant des 
-                    ingénieurs aérospatiaux, des experts en cybersécurité, des scientifiques, et des 
-                    spécialistes en systèmes de défense. Notre équipe est notre plus grande force.
+                    NorthShield emploie plus de 2,500 professionnels — ingénierie aérospatiale,
+                    cybersécurité, exploitation segment sol et maintien en conditions opérationnelles.
+                    Une partie de notre socle logiciel historique est maintenue en Ada pour des raisons
+                    de stabilité et de certification.
                 </p>
                 <div class="team-stats">
                     <div class="team-stat">
@@ -175,8 +183,8 @@ session_start();
             </div>
 
             <div class="cta-section">
-                <h2>Rejoignez-nous dans notre mission</h2>
-                <p>Découvrez comment NorthShield peut répondre à vos besoins en systèmes de défense.</p>
+                <h2>Découvrir ARGOS‑7 et le segment sol</h2>
+                <p>Accédez à la documentation d’intégration et aux services GS‑OPS via le portail client.</p>
                 <a href="services.php" class="btn btn-primary">Nos Services</a>
             </div>
         </div>
@@ -188,7 +196,7 @@ session_start();
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>NorthShield Defense</h4>
-                    <p>Leader en systèmes de défense et technologies spatiales depuis 1999.</p>
+                    <p>Solutions d’observation, de communications et de segment sol depuis 1999.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
